@@ -8,9 +8,9 @@ This project is aimed at helping aid scripture study by giving the end user a pl
 - MongoDB
 
 ## Installation
-- [] Clone repository
-- [] Install packages: `npm install`
-- [] Setup MongoDB database:
+- [ ] Clone repository
+- [ ] Install packages: `npm install`
+- [ ] Setup MongoDB database:
     - Create a new database named > library
     - Create collections:
         - journals
@@ -18,8 +18,8 @@ This project is aimed at helping aid scripture study by giving the end user a pl
         - topics
         - users
         - sessions
-- [] Setup GitHub OAuth app with client ID and client secret
-- [] Setup local environment file: 
+- [ ] Setup GitHub OAuth app with client ID and client secret
+- [ ] Setup local environment file: 
     - MongoDB URI: `MONGODB_URI = <Your MongoDB Connection URI Here>`
     - GitHub Client ID: `GITHUB_CLIENT_ID = <Your Client ID Here>`
     - GitHub Client Secret: `GITHUB_CLIENT_SECRET = <Your Client Secret Here>`
