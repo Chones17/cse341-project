@@ -9,7 +9,7 @@ JavaScript
 OAuth
 MongoDB
 
-##Team Members
+## Team Members
 - Travis Stirling, 
 - Zachary Thompson, 
 - Kelley Robertson
