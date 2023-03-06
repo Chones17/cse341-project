@@ -1,0 +1,31 @@
+{
+  "name": "cse341-project",
+  "version": "1.0.0",
+  "description": "CSE 341 Final Project - My Scripture Journal",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "devStart": "nodemon app.js",
+    "readme": "node readme.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chones17/cse341-project.git"
+  },
+  "author": "Travis Stirling, Zach Thompson, Kelley Robertson, Miguel Marin Javier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chones17/cse341-project/issues"
+  },
+  "homepage": "https://github.com/Chones17/cse341-project#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
