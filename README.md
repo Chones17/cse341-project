@@ -20,12 +20,17 @@ This project is aimed at helping aid scripture study by giving the end user a pl
         - _sessions_
 - [ ] Setup GitHub OAuth app with client ID and client secret
 - [ ] Setup local environment file: 
-    - MongoDB URI: `MONGODB_URI = <Your MongoDB Connection URI Here>`
-    - GitHub Client ID: `GITHUB_CLIENT_ID = <Your Client ID Here>`
-    - GitHub Client Secret: `GITHUB_CLIENT_SECRET = <Your Client Secret Here>`
-    - Session Secret: `SESSION_SECRET = cse341_secret`
-        - DO NOT REPLACE SESSION SECRET
+    ```
+    # MongoDB connection URI
+    MONGODB_URI = <Your MongoDB Connection URI Here>
 
+    # GitHub client ID and Secret
+    GITHUB_CLIENT_ID = <Your Client ID Here>
+    GITHUB_CLIENT_SECRET = <Your Client Secret Here>
+
+    # Session secret
+    SESSION_SECRET = cse341_secret
+    ```
 ## Dependencies
 - Cors
 - Dotenv
