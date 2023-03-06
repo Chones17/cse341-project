@@ -11,13 +11,13 @@ This project is aimed at helping aid scripture study by giving the end user a pl
 - [ ] Clone repository
 - [ ] Install packages: `npm install`
 - [ ] Setup MongoDB database:
-    - Create a new database named > library
+    - Create a new database named _library_
     - Create collections:
-        - journals
-        - notes
-        - topics
-        - users
-        - sessions
+        - _journals_
+        - _notes_
+        - _topics_
+        - _users_
+        - _sessions_
 - [ ] Setup GitHub OAuth app with client ID and client secret
 - [ ] Setup local environment file: 
     - MongoDB URI: `MONGODB_URI = <Your MongoDB Connection URI Here>`
