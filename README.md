@@ -43,8 +43,8 @@ This project is aimed at helping aid scripture study by giving the end user a pl
 - Nodemon
 
 ## Authors
-- Travis Stirling, 
-- Zachary Thompson, 
-- Kelley Robertson,
+- Travis Stirling
+- Zachary Thompson 
+- Kelley Robertson
 - Miguel Marin Javier
 
