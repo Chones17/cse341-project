@@ -19,6 +19,10 @@ This project is aimed at helping aid scripture study by giving the end user a pl
         - _users_
         - _sessions_
 - [ ] Setup GitHub OAuth app with client ID and client secret
+    - Application name: `cse341-project-localhost`
+    - Homepage URL: `http://localhost:3000`
+    - Authorization callback URL: `http://localhost:3000/auth/github/callback`
+    - Enable Device Flow: ***blank***
 - [ ] Setup local environment file: 
     ```
     # MongoDB connection URI
@@ -29,7 +33,7 @@ This project is aimed at helping aid scripture study by giving the end user a pl
     GITHUB_CLIENT_SECRET = <Your Client Secret Here>
 
     # Session secret
-    SESSION_SECRET = cse341_secret
+    SESSION_SECRET = <Your Session Secret Here>
     ```
 ## Dependencies
 - Cors
