@@ -1,0 +1,9 @@
+# ---------------- LOCALHOST -------------------- #
+
+### HTTP GET Request - Landing Page
+GET http://localhost:3000 HTTP/1.1
+
+# ---------------- PRODUCTION ------------------- #
+
+### HTTPS GET Request - Landing Page
+GET https://cse341-project.onrender.com HTTP/1.1
