@@ -1,5 +1,5 @@
-const index = async (req, res) => {
+const home = async (req, res) => {
     await res.send('This is the home page.');
 }
 
-module.exports = index;
+module.exports = home;
