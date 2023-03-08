@@ -41,6 +41,8 @@ This project is aimed at helping aid scripture study by giving the end user a pl
 - Express
 - Mongoose
 - Nodemon
+- swagger-ui-express
+- swagger-autogen
 
 ## Authors
 - Travis Stirling
