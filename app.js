@@ -4,8 +4,8 @@ const express = require('express');
 const cors = require('cors');
 const connect = require('./config/connect');
 const app = express();
-const port = process.env.PORT || 3000;
 const mongoose = require('mongoose');
+const port = process.env.PORT || 3000;
 
 // Connect to database
 connect();
