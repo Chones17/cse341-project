@@ -7,7 +7,7 @@ const MongoClient = require('mongodb').MongoClient;
 
 let _db;
 
-//Referenced 
+//switched mongodb to mongoose
 const initDb = (callback) => {
   if (_db) {
     console.log('Db is already initialized!');
