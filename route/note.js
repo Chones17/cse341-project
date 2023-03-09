@@ -9,6 +9,6 @@ route.get('/:id', entryController.getNote);
 route.post('/', entryController.createNote);
 
 route.put('/:id', entryController.updateNote);
-// route.delete('/:id', entryController.deleteEntry);
+route.delete('/:id', entryController.deleteNote);
 
 module.exports = route;

@@ -35,6 +35,8 @@ Content-Type: application/json
     "verse": 11,
     "note": "Good verse"
 }
+### HTTP DELETE Request - Notes
+DELETE http://localhost:3000/note/640a1afb387774afa60eafaa HTTP/1.1
 
 ### HTTP POST request - Journals
 POST http://localhost:3000/journal HTTP/1.1

@@ -52,4 +52,13 @@ const updateNote = async (req, res) => {
   res.status(200).json(result);
 }
 
-module.exports = {getNotes, getNote, createNote, updateNote};
+//Delete
+
+const deleteNote = async (req, res) => {
+  const user_id = new ObjectId(req.params.id);
+  const result = await Note.findByIdAndDelete(user_id)
+
+  res.status(200).json(result);
+}
+
+module.exports = {getNotes, getNote, createNote, updateNote, deleteNote};
