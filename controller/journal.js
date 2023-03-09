@@ -1,53 +1,51 @@
 const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 
+var Journal = require('../model/Journal');
+
 //Get all
 const getJournals = async (req, res, next) => {
-    try {
-    mongodb.getDb().db().collection('journals').find().toArray((err, lists) => {
-      if (err){
-        res.status(400).json({message: err});
-      }
-      res.setHeader('Content-Type', 'application/json');
-      res.status(200).json(lists);
-    });
-    } catch (err){
-      res.status(500).json(err);
-    }
-    };
-
-const getJournal = async (req, res, next) => {
-    try {
-        //  #swagger.parameters['id'] = { description: 'Get a specfic worker' }
-    const userId = new ObjectId(req.params.id);
-    mongodb.getDb().db().collection('journals').find({ _id: userId }).toArray((err, result) => {
-        if (err){
-        res.status(400).json({message: err});
-        }
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(result[0]);
-    });
-    } catch (err){
-    res.status(500).json(err);
-    }
-    };
-
-const createJournal = async (req, res) => {
-  const journal = {
-    title: req.body.title,
-    description: req.body.description,
-    createDate: req.body.createDate
+  const result = await Journal.find( {});
+  res.status(200).json(result);
   };
-  const result = await mongodb
-  .getDb()
-  .db()
-  .collection('journals')
-  .insertOne(journal);
-  if (result.acknowledged) {
-    res.status(201).json(result);
-  } else {
-    res.status(500).json(result.error || 'Some error occurred while creating the journal.');
-  }
+
+//Get One
+const getJournal = async (req, res, next) => {
+    const userId = new ObjectId(req.params.id);
+  const result = await Journal.findOne({ _id: userId });
+  res.status(200).json(result);
+  };
+
+//Create
+const createJournal = async (req, res) => {
+  var journal = new Journal({
+    title: req.body.title,
+    description: req.body. description
+})
+const result = await journal.save()
+res.status(200).json(result);
 }
 
-module.exports = {getJournals, getJournal, createJournal};
+
+//Update
+const updateJournal = async (req, res) => {
+  const user_id = new ObjectId(req.params.id);
+  var journal = {
+  title: req.body.title,
+  description: req.body. description
+}
+const result = await Journal.findByIdAndUpdate(user_id, journal)
+
+res.status(200).json(result);
+}
+
+//Delete
+
+const deleteJournal = async (req, res) => {
+const user_id = new ObjectId(req.params.id);
+const result = await Journal.findByIdAndDelete(user_id)
+
+res.status(200).json(result);
+}
+
+module.exports = {getJournals, getJournal, createJournal, updateJournal, deleteJournal};

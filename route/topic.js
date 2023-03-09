@@ -8,7 +8,7 @@ route.get('/:id', topicController.getTopic);
 
 route.post('/', topicController.createTopic);
 
-// route.put('/:id', topicController.updateTopic);
-// route.delete('/:id', topicController.deleteTopic);
+route.put('/:id', topicController.updateTopic);
+route.delete('/:id', topicController.deleteTopic);
 
 module.exports = route;

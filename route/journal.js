@@ -8,7 +8,7 @@ route.get('/:id', journalController.getJournal);
 
 route.post('/', journalController.createJournal);
 
-// route.put('/:id', journalController.updateJournal);
-// route.delete('/:id', journalController.deleteJournal);
+route.put('/:id', journalController.updateJournal);
+route.delete('/:id', journalController.deleteJournal);
 
 module.exports = route;

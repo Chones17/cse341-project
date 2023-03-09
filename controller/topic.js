@@ -2,54 +2,54 @@ const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 
 
+var Topic = require('../model/Topic');
+
+
+
+
 //Get all
 const getTopics = async (req, res, next) => {
-    try {
-    mongodb.getDb().db().collection('topics').find().toArray((err, lists) => {
-      if (err){
-        res.status(400).json({message: err});
-      }
-      res.setHeader('Content-Type', 'application/json');
-      res.status(200).json(lists);
-    });
-    } catch (err){
-      res.status(500).json(err);
-    }
+    const result = await Topic.find( {});
+    res.status(200).json(result);
     };
 
+//Get One
 const getTopic = async (req, res, next) => {
-    try {
-        //  #swagger.parameters['id'] = { description: 'Get a specfic worker' }
-    const userId = new ObjectId(req.params.id);
-    mongodb.getDb().db().collection('topics').find({ _id: userId }).toArray((err, result) => {
-        if (err){
-        res.status(400).json({message: err});
-        }
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(result[0]);
-    });
-    } catch (err){
-    res.status(500).json(err);
-    }
+      const userId = new ObjectId(req.params.id);
+    const result = await Topic.findOne({ _id: userId });
+    res.status(200).json(result);
     };
-
-
+  
+//Create
 const createTopic = async (req, res) => {
-  const topic = {
-    title: req.body.title,
-    description: req.body.description
-  };
-  const result = await mongodb
-  .getDb()
-  .db()
-  .collection('topics')
-  .insertOne(topic);
-  if (result.acknowledged) {
-    res.status(201).json(result);
-  } else {
-    res.status(500).json(result.error || 'Some error occurred while creating the topic.');
-  }
+    var topic = new Topic({
+      title: req.body.title,
+      description: req.body. description
+  })
+  const result = await topic.save()
+  res.status(200).json(result);
 }
 
 
-module.exports = {getTopics, getTopic, createTopic};
+//Update
+const updateTopic = async (req, res) => {
+    const user_id = new ObjectId(req.params.id);
+    var topic = {
+    title: req.body.title,
+    description: req.body. description
+  }
+  const result = await Topic.findByIdAndUpdate(user_id, topic)
+
+  res.status(200).json(result);
+}
+
+//Delete
+
+const deleteTopic = async (req, res) => {
+  const user_id = new ObjectId(req.params.id);
+  const result = await Topic.findByIdAndDelete(user_id)
+
+  res.status(200).json(result);
+}
+
+module.exports = {getTopics, getTopic, createTopic, updateTopic, deleteTopic};
