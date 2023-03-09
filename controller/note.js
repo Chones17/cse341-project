@@ -6,19 +6,19 @@ const mongoose = require('mongoose');
 var Note = require('../model/Note')
 
 
+
+
 //Get all
 const getNotes = async (req, res, next) => {
-    const result = Note.find({});
-    console.log(result);
-  
-
+    const notes = await Note.find( {});
+    console.log(notes);
     };
 
 const getNote = async (req, res, next) => {
   
         //  #swagger.parameters['id'] = { description: 'Get a specfic worker' }
     const userId = new ObjectId(req.params.id);
-    const result = Note.find({ _id: userId });
+    const result = await Note.findOne({ _id: userId });
    
     console.log(result);
     
