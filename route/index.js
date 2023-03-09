@@ -8,7 +8,7 @@ route.use('/', require('./swagger'));
 // route.get('/user', require('../route/user'));
 
 route.use('/journal', require('./journal'));
-route.use('/entry', require('./entry'));
+route.use('/note', require('./note'));
 route.use('/topic', require('./topic'));
 route.use('/user', require('./user'));
 

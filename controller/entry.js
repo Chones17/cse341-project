@@ -3,7 +3,7 @@ const ObjectId = require('mongodb').ObjectId;
 
 
 //Get all
-const getEntries = async (req, res, next) => {
+const getNotes = async (req, res, next) => {
     try {
     mongodb.getDb().db().collection('notes').find().toArray((err, lists) => {
       if (err){
@@ -17,7 +17,7 @@ const getEntries = async (req, res, next) => {
     }
     };
 
-const getEntry = async (req, res, next) => {
+const getNote = async (req, res, next) => {
     try {
         //  #swagger.parameters['id'] = { description: 'Get a specfic worker' }
     const userId = new ObjectId(req.params.id);
@@ -33,7 +33,7 @@ const getEntry = async (req, res, next) => {
     }
     };
 
-const createEntry = async (req, res) => {
+const createNote = async (req, res) => {
   const entry = {
     entryDate: req.body.entryDate,
     canon: req.body.canon,
@@ -54,4 +54,4 @@ const createEntry = async (req, res) => {
   }
 }
 
-module.exports = {getEntries, getEntry, createEntry};
+module.exports = {getNotes, getNote, createNote};
