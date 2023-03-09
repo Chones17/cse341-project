@@ -3,10 +3,10 @@
 ### HTTP GET Request - Landing Page
 GET http://localhost:3000 HTTP/1.1
 
-### HTTP GET Request - Landing Page
+### HTTP GET Request - Notes
 GET http://localhost:3000/note HTTP/1.1
 
-### HTTP GET Request - Landing Page
+### HTTP GET Request - Notes
 GET http://localhost:3000/note/640a1afb387774afa60eafaa HTTP/1.1
 
 ### HTTP POST request - Notes
@@ -19,6 +19,20 @@ Content-Type: application/json
     "book": "Alma",
     "chapter": 32,
     "verse": 21,
+    "note": "Good verse"
+}
+
+### HTTP PUT request - Notes
+
+PUT http://localhost:3000/note/640a1afb387774afa60eafaa HTTP/1.1
+Content-Type: application/json
+
+{
+    "entryDate": "03-08-2023",
+    "canon": "Book of Mormon",
+    "book": "Alma",
+    "chapter": 22,
+    "verse": 11,
     "note": "Good verse"
 }
 

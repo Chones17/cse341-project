@@ -14,17 +14,14 @@ const getNotes = async (req, res, next) => {
     console.log(notes);
     };
 
+//Get One
 const getNote = async (req, res, next) => {
-  
-        //  #swagger.parameters['id'] = { description: 'Get a specfic worker' }
-    const userId = new ObjectId(req.params.id);
+      const userId = new ObjectId(req.params.id);
     const result = await Note.findOne({ _id: userId });
-   
     console.log(result);
-    
     };
   
-
+//Create
 const createNote = async (req, res) => {
     var note = new Note({
     entryDate: req.body.entryDate,
@@ -36,7 +33,22 @@ const createNote = async (req, res) => {
   })
   const result = await note.save()
   console.log(result);
-
 }
 
-module.exports = {getNotes, getNote, createNote};
+
+//Update
+const updateNote = async (req, res) => {
+    const user_id = new ObjectId(req.params.id);
+    var note = {
+    entryDate: req.body.entryDate,
+    canon: req.body.canon,
+    book: req.body.book,
+    chapter: req.body.chapter,
+    verse: req.body.verse,
+    note: req.body.note
+  }
+  const result = await Note.findByIdAndUpdate(user_id, note)
+  console.log(result);
+}
+
+module.exports = {getNotes, getNote, createNote, updateNote};
