@@ -10,15 +10,15 @@ var Note = require('../model/Note')
 
 //Get all
 const getNotes = async (req, res, next) => {
-    const notes = await Note.find( {});
-    console.log(notes);
+    const result = await Note.find( {});
+    res.status(200).json(result);
     };
 
 //Get One
 const getNote = async (req, res, next) => {
       const userId = new ObjectId(req.params.id);
     const result = await Note.findOne({ _id: userId });
-    console.log(result);
+    res.status(200).json(result);
     };
   
 //Create
@@ -32,7 +32,7 @@ const createNote = async (req, res) => {
     note: req.body.note
   })
   const result = await note.save()
-  console.log(result);
+  res.status(200).json(result);
 }
 
 
@@ -48,7 +48,8 @@ const updateNote = async (req, res) => {
     note: req.body.note
   }
   const result = await Note.findByIdAndUpdate(user_id, note)
-  console.log(result);
+
+  res.status(200).json(result);
 }
 
 module.exports = {getNotes, getNote, createNote, updateNote};
