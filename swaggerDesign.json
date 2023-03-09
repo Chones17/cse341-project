@@ -7,6 +7,24 @@
   },
   "host": "https://localhost:3000/",
   "basePath": "/",
+  "tags": [
+    {
+      "name": "Notes",
+      "description": "These are notes or thoughts about the scripture"
+    },
+    {
+      "name": "Journal",
+      "description": "A collection of notes"
+    },
+    {
+      "name": "Topics",
+      "description": "These topics can be used to help differentiate different study topics"
+    },
+    {
+      "name": "Users",
+      "description": "Keeps Track of the user and their credentials"
+    }
+  ],
   "schemes": [
     "https"
   ],
@@ -31,24 +49,17 @@
     },
     "/journal/": {
       "get": {
+        "tags": ["Journal"],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
       "post": {
+        "tags": ["Journal"],
         "description": "",
         "parameters": [
           {
@@ -62,8 +73,56 @@
                 },
                 "description": {
                   "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/journal/{id}": {
+      "get": {
+        "tags": ["Journal"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Journal"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "example": "any"
                 },
-                "createDate": {
+                "description": {
                   "example": "any"
                 }
               }
@@ -71,45 +130,32 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "500": {
-            "description": "Internal Server Error"
+          "200": {
+            "description": "OK"
           }
         }
-      }
-    },
-    "/journal/{id}": {
-      "get": {
+      },
+      "delete": {
+        "tags": ["Journal"],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string",
-            "description": "Get a specfic worker"
+            "type": "string"
           }
         ],
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
     },
     "/note/": {
       "get": {
+        "tags": ["Notes"],
         "description": "",
         "parameters": [],
         "responses": {
@@ -119,6 +165,7 @@
         }
       },
       "post": {
+        "tags": ["Notes"],
         "description": "",
         "parameters": [
           {
@@ -158,6 +205,7 @@
     },
     "/note/{id}": {
       "get": {
+        "tags": ["Notes"],
         "description": "",
         "parameters": [
           {
@@ -174,6 +222,7 @@
         }
       },
       "put": {
+        "tags": ["Notes"],
         "description": "",
         "parameters": [
           {
@@ -217,6 +266,7 @@
         }
       },
       "delete": {
+        "tags": ["Notes"],
         "description": "",
         "parameters": [
           {
@@ -235,24 +285,17 @@
     },
     "/topic/": {
       "get": {
+        "tags": ["Topics"],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
       "post": {
+        "tags": ["Topics"],
         "description": "",
         "parameters": [
           {
@@ -272,63 +315,93 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "500": {
-            "description": "Internal Server Error"
+          "200": {
+            "description": "OK"
           }
         }
       }
     },
     "/topic/{id}": {
       "get": {
+        "tags": ["Topics"],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string",
-            "description": "Get a specfic worker"
+            "type": "string"
           }
         ],
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Topics"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
           },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Topics"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
     },
     "/user/": {
       "get": {
+        "tags": ["Users"],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
       "post": {
+        "tags": ["Users"],
         "description": "",
         "parameters": [
           {
@@ -337,13 +410,10 @@
             "schema": {
               "type": "object",
               "properties": {
-                "githubId": {
+                "title": {
                   "example": "any"
                 },
-                "userName": {
-                  "example": "any"
-                },
-                "email": {
+                "description": {
                   "example": "any"
                 }
               }
@@ -351,39 +421,76 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "500": {
-            "description": "Internal Server Error"
+          "200": {
+            "description": "OK"
           }
         }
       }
     },
     "/user/{id}": {
       "get": {
+        "tags": ["Users"],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string",
-            "description": "Get a specfic worker"
+            "type": "string"
           }
         ],
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Users"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
           },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Users"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
