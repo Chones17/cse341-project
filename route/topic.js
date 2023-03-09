@@ -6,7 +6,7 @@ const route = express.Router();
 route.get('/', topicController.getTopics);
 route.get('/:id', topicController.getTopic);
 
-// route.post('/', topicController.createTopic);
+route.post('/', topicController.createTopic);
 
 // route.put('/:id', topicController.updateTopic);
 // route.delete('/:id', topicController.deleteTopic);

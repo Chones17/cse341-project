@@ -33,4 +33,25 @@ const getEntry = async (req, res, next) => {
     }
     };
 
-module.exports = {getEntries, getEntry};
+const createEntry = async (req, res) => {
+  const entry = {
+    entryDate: req.body.entryDate,
+    canon: req.body.canon,
+    book: req.body.book,
+    chapter: req.body.chapter,
+    verse: req.body.verse,
+    note: req.body.note
+  };
+  const result = await mongodb
+  .getDb()
+  .db()
+  .collection('notes')
+  .insertOne(entry);
+  if (result.acknowledged) {
+    res.status(201).json(result);
+  } else {
+    res.status(500).json(result.error || 'Some error occurred while creating the note.');
+  }
+}
+
+module.exports = {getEntries, getEntry, createEntry};

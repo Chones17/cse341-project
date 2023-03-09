@@ -6,7 +6,7 @@ const route = express.Router();
 route.get('/', entryController.getEntries);
 route.get('/:id', entryController.getEntry);
 
-// route.post('/', entryController.createEntry);
+route.post('/', entryController.createEntry);
 
 // route.put('/:id', entryController.updateEntry);
 // route.delete('/:id', entryController.deleteEntry);

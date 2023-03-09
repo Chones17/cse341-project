@@ -6,7 +6,7 @@ const route = express.Router();
 route.get('/', journalController.getJournals);
 route.get('/:id', journalController.getJournal);
 
-// route.post('/', journalController.createJournal);
+route.post('/', journalController.createJournal);
 
 // route.put('/:id', journalController.updateJournal);
 // route.delete('/:id', journalController.deleteJournal);

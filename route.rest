@@ -3,6 +3,48 @@
 ### HTTP GET Request - Landing Page
 GET http://localhost:3000 HTTP/1.1
 
+### HTTP POST request - Notes
+POST http://localhost:3000/notes HTTP/1.1
+Content-Type: application/json
+
+{
+    "entryDate": 01-01-2023,
+    "canon": "Book of Mormon",
+    "book": "Alma",
+    "chapter": 32,
+    "verse": 21,
+    "note": "Good verse"
+}
+
+### HTTP POST request - Journals
+POST http://localhost:3000/journals HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Personal study about prayer",
+    "description": "Prayer is a wonderful thing",
+    "createDate": 01-01-2023
+}
+
+### HTTP POST request - Topics
+POST http://localhost:3000/topics HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Faith",
+    "description": "Faith is like a seed"
+}
+
+### HTTP POST request - Users
+POST http://localhost:3000/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "githubId": "8313847365",
+    "userName": "newUser1234",
+    "email": "howdy@email.com"
+}
+
 # ---------------- PRODUCTION ------------------- #
 
 ### HTTPS GET Request - Landing Page

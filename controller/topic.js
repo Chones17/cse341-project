@@ -34,4 +34,22 @@ const getTopic = async (req, res, next) => {
     };
 
 
-module.exports = {getTopics, getTopic};
+const createTopic = async (req, res) => {
+  const topic = {
+    title: req.body.title,
+    description: req.body.description
+  };
+  const result = await mongodb
+  .getDb()
+  .db()
+  .collection('topics')
+  .insertOne(topic);
+  if (result.acknowledged) {
+    res.status(201).json(result);
+  } else {
+    res.status(500).json(result.error || 'Some error occurred while creating the topic.');
+  }
+}
+
+
+module.exports = {getTopics, getTopic, createTopic};

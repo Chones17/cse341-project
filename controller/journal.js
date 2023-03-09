@@ -32,4 +32,22 @@ const getJournal = async (req, res, next) => {
     }
     };
 
-module.exports = {getJournals, getJournal};
+const createJournal = async (req, res) => {
+  const journal = {
+    title: req.body.title,
+    description: req.body.description,
+    createDate: req.body.createDate
+  };
+  const result = await mongodb
+  .getDb()
+  .db()
+  .collection('journals')
+  .insertOne(journal);
+  if (result.acknowledged) {
+    res.status(201).json(result);
+  } else {
+    res.status(500).json(result.error || 'Some error occurred while creating the journal.');
+  }
+}
+
+module.exports = {getJournals, getJournal, createJournal};

@@ -33,4 +33,23 @@ const getUser = async (req, res, next) => {
     }
     };
 
-module.exports = {getUsers, getUser};
+
+const createUser = async (req, res) => {
+  const user = {
+    githubId: req.body.githubId,
+    userName: req.body.userName,
+    email: req.body.email
+  };
+  const result = await mongodb
+  .getDb()
+  .db()
+  .collection('users')
+  .insertOne(user);
+  if (result.acknowledged) {
+    res.status(201).json(result);
+  } else {
+    res.status(500).json(result.error || 'Some error occurred while creating the user.');
+  }
+}
+
+module.exports = {getUsers, getUser, createUser};
