@@ -1,14 +1,19 @@
-const express = require('express');
-const userController = require('../controller/user');
-const route = express.Router();
+// Require the User router, validation middleware, and controller
+const route = require('express').Router();
+const controller = require('../controller/user');
 
+// Handles any http GET requests
+route.get('/', controller.getUsers);
+route.get('/:id', controller.getUser);
 
-route.get('/', userController.getUsers);
-route.get('/:id', userController.getUser);
+// Handles any http POST requests
+route.post('/', controller.createUser);
 
-route.post('/', userController.createUser);
+// Handles any http PUT requests
+route.put('/:id', controller.updateUser);
 
-route.put('/:id', userController.updateUser);
-route.delete('/:id', userController.deleteUser);
+// Handles any http DELETE requests
+route.delete('/:id', controller.deleteUser);
 
+// Export route object
 module.exports = route;

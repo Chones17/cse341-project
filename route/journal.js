@@ -1,14 +1,19 @@
-const express = require('express');
-const journalController = require('../controller/journal');
-const route = express.Router();
+// Require the Journal router, validation middleware, and controller
+const route = require('express').Router();
+const controller = require('../controller/journal');
 
+// Handles any http GET requests
+route.get('/', controller.getJournals);
+route.get('/:id', controller.getJournal);
 
-route.get('/', journalController.getJournals);
-route.get('/:id', journalController.getJournal);
+// Handles any http POST requests
+route.post('/', controller.createJournal);
 
-route.post('/', journalController.createJournal);
+// Handles any http PUT requests
+route.put('/:id', controller.updateJournal);
 
-route.put('/:id', journalController.updateJournal);
-route.delete('/:id', journalController.deleteJournal);
+// Handles any http DELETE requests
+route.delete('/:id', controller.deleteJournal);
 
+// Export route object
 module.exports = route;
