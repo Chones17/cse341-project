@@ -7,8 +7,8 @@ const doc = {
     title: 'My Scripture Journal API',
     description: 'API for keeping a Scripture Journal'
   },
-  host: 'localhost:3000',
-  schemes: ['http'],
+  host: 'cse341-project-production.onrender.com',
+  schemes: ['https'],
   tags: [
     {
       name: 'Authentication',

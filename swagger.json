@@ -5,7 +5,7 @@
     "description": "API for keeping a Scripture Journal",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "cse341-project-production.onrender.com",
   "basePath": "/",
   "tags": [
     {
@@ -30,14 +30,18 @@
     }
   ],
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/": {
       "get": {
         "description": "",
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/login": {
