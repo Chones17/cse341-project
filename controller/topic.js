@@ -9,20 +9,23 @@ var Topic = require('../model/Topic');
 
 //Get all
 const getTopics = async (req, res, next) => {
-    const result = await Topic.find( {});
+  // #swagger.tags = ['Topic']
+  const result = await Topic.find( {});
     res.status(200).json(result);
     };
 
 //Get One
 const getTopic = async (req, res, next) => {
-      const userId = new ObjectId(req.params.id);
+  // #swagger.tags = ['Topic']
+  const userId = new ObjectId(req.params.id);
     const result = await Topic.findOne({ _id: userId });
     res.status(200).json(result);
     };
   
 //Create
 const createTopic = async (req, res) => {
-    var topic = new Topic({
+  // #swagger.tags = ['Topic']
+  var topic = new Topic({
       title: req.body.title,
       description: req.body. description
   })
@@ -33,7 +36,8 @@ const createTopic = async (req, res) => {
 
 //Update
 const updateTopic = async (req, res) => {
-    const user_id = new ObjectId(req.params.id);
+  // #swagger.tags = ['Topic']
+  const user_id = new ObjectId(req.params.id);
     var topic = {
     title: req.body.title,
     description: req.body. description
@@ -46,6 +50,7 @@ const updateTopic = async (req, res) => {
 //Delete
 
 const deleteTopic = async (req, res) => {
+  // #swagger.tags = ['Topic']
   const user_id = new ObjectId(req.params.id);
   const result = await Topic.findByIdAndDelete(user_id)
 

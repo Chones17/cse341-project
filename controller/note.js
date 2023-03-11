@@ -10,20 +10,23 @@ var Note = require('../model/Note');
 
 //Get all
 const getNotes = async (req, res, next) => {
-    const result = await Note.find( {});
+  // #swagger.tags = ['Note']
+  const result = await Note.find( {});
     res.status(200).json(result);
     };
 
 //Get One
 const getNote = async (req, res, next) => {
-      const userId = new ObjectId(req.params.id);
+  // #swagger.tags = ['Note']
+  const userId = new ObjectId(req.params.id);
     const result = await Note.findOne({ _id: userId });
     res.status(200).json(result);
     };
   
 //Create
 const createNote = async (req, res) => {
-    var note = new Note({
+  // #swagger.tags = ['Note']
+  var note = new Note({
     entryDate: req.body.entryDate,
     canon: req.body.canon,
     book: req.body.book,
@@ -38,7 +41,8 @@ const createNote = async (req, res) => {
 
 //Update
 const updateNote = async (req, res) => {
-    const user_id = new ObjectId(req.params.id);
+  // #swagger.tags = ['Note']
+  const user_id = new ObjectId(req.params.id);
     var note = {
     entryDate: req.body.entryDate,
     canon: req.body.canon,
@@ -55,6 +59,7 @@ const updateNote = async (req, res) => {
 //Delete
 
 const deleteNote = async (req, res) => {
+  // #swagger.tags = ['Note']
   const user_id = new ObjectId(req.params.id);
   const result = await Note.findByIdAndDelete(user_id)
 
