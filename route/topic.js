@@ -1,14 +1,18 @@
-const express = require('express');
-const topicController = require('../controller/topic');
-const route = express.Router();
+// Require the Topic router, validation middleware, and controller
+const route = require('express').Router();
+const controller = require('../controller/topic');
 
+// Handles any http GET requests
+route.get('/', controller.getTopics);
 
-route.get('/', topicController.getTopics);
-route.get('/:id', topicController.getTopic);
+// Handles any http POST requests
+route.post('/', controller.createTopic);
 
-route.post('/', topicController.createTopic);
+// Handles any http PUT requests
+route.put('/:id', controller.updateTopic);
 
-route.put('/:id', topicController.updateTopic);
-route.delete('/:id', topicController.deleteTopic);
+// Handles any http DELETE requests
+route.delete('/:id', controller.deleteTopic);
 
+// Export route object
 module.exports = route;

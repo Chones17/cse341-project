@@ -5,23 +5,27 @@
     "description": "API for keeping a Scripture Journal",
     "version": "1.0.0"
   },
-  "host": "https://localhost:3000/",
+  "host": "cse341-project-production.onrender.com",
   "basePath": "/",
   "tags": [
     {
-      "name": "Notes",
-      "description": "These are notes or thoughts about the scripture"
+      "name": "Authentication",
+      "description": "These are authentication routes"
     },
     {
       "name": "Journal",
       "description": "A collection of notes"
     },
     {
-      "name": "Topics",
+      "name": "Note",
+      "description": "These are notes or thoughts about the scripture"
+    },
+    {
+      "name": "Topic",
       "description": "These topics can be used to help differentiate different study topics"
     },
     {
-      "name": "Users",
+      "name": "User",
       "description": "Keeps Track of the user and their credentials"
     }
   ],
@@ -40,16 +44,39 @@
         }
       }
     },
-    "/api-docs": {
+    "/login": {
       "get": {
+        "tags": [
+          "Authentication"
+        ],
         "description": "",
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/logout": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/journal/": {
       "get": {
-        "tags": ["Journal"],
+        "tags": [
+          "Journal"
+        ],
         "description": "",
         "parameters": [],
         "responses": {
@@ -59,7 +86,9 @@
         }
       },
       "post": {
-        "tags": ["Journal"],
+        "tags": [
+          "Journal"
+        ],
         "description": "",
         "parameters": [
           {
@@ -87,7 +116,9 @@
     },
     "/journal/{id}": {
       "get": {
-        "tags": ["Journal"],
+        "tags": [
+          "Journal"
+        ],
         "description": "",
         "parameters": [
           {
@@ -104,7 +135,9 @@
         }
       },
       "put": {
-        "tags": ["Journal"],
+        "tags": [
+          "Journal"
+        ],
         "description": "",
         "parameters": [
           {
@@ -136,7 +169,9 @@
         }
       },
       "delete": {
-        "tags": ["Journal"],
+        "tags": [
+          "Journal"
+        ],
         "description": "",
         "parameters": [
           {
@@ -155,7 +190,9 @@
     },
     "/note/": {
       "get": {
-        "tags": ["Notes"],
+        "tags": [
+          "Note"
+        ],
         "description": "",
         "parameters": [],
         "responses": {
@@ -165,7 +202,9 @@
         }
       },
       "post": {
-        "tags": ["Notes"],
+        "tags": [
+          "Note"
+        ],
         "description": "",
         "parameters": [
           {
@@ -205,7 +244,9 @@
     },
     "/note/{id}": {
       "get": {
-        "tags": ["Notes"],
+        "tags": [
+          "Note"
+        ],
         "description": "",
         "parameters": [
           {
@@ -222,7 +263,9 @@
         }
       },
       "put": {
-        "tags": ["Notes"],
+        "tags": [
+          "Note"
+        ],
         "description": "",
         "parameters": [
           {
@@ -266,7 +309,9 @@
         }
       },
       "delete": {
-        "tags": ["Notes"],
+        "tags": [
+          "Note"
+        ],
         "description": "",
         "parameters": [
           {
@@ -283,9 +328,53 @@
         }
       }
     },
+    "/note/{date}": {
+      "get": {
+        "tags": [
+          "Note"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/note/{topic}": {
+      "get": {
+        "tags": [
+          "Note"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "topic",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/topic/": {
       "get": {
-        "tags": ["Topics"],
+        "tags": [
+          "Topic"
+        ],
         "description": "",
         "parameters": [],
         "responses": {
@@ -295,7 +384,9 @@
         }
       },
       "post": {
-        "tags": ["Topics"],
+        "tags": [
+          "Topic"
+        ],
         "description": "",
         "parameters": [
           {
@@ -322,25 +413,10 @@
       }
     },
     "/topic/{id}": {
-      "get": {
-        "tags": ["Topics"],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
       "put": {
-        "tags": ["Topics"],
+        "tags": [
+          "Topic"
+        ],
         "description": "",
         "parameters": [
           {
@@ -372,7 +448,9 @@
         }
       },
       "delete": {
-        "tags": ["Topics"],
+        "tags": [
+          "Topic"
+        ],
         "description": "",
         "parameters": [
           {
@@ -391,7 +469,9 @@
     },
     "/user/": {
       "get": {
-        "tags": ["Users"],
+        "tags": [
+          "User"
+        ],
         "description": "",
         "parameters": [],
         "responses": {
@@ -401,7 +481,9 @@
         }
       },
       "post": {
-        "tags": ["Users"],
+        "tags": [
+          "User"
+        ],
         "description": "",
         "parameters": [
           {
@@ -429,7 +511,9 @@
     },
     "/user/{id}": {
       "get": {
-        "tags": ["Users"],
+        "tags": [
+          "User"
+        ],
         "description": "",
         "parameters": [
           {
@@ -446,7 +530,9 @@
         }
       },
       "put": {
-        "tags": ["Users"],
+        "tags": [
+          "User"
+        ],
         "description": "",
         "parameters": [
           {
@@ -478,7 +564,9 @@
         }
       },
       "delete": {
-        "tags": ["Users"],
+        "tags": [
+          "User"
+        ],
         "description": "",
         "parameters": [
           {

@@ -1,11 +1,12 @@
+// Create the router object
 const route = require('express').Router();
+
+// Add Swagger UI
 const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('../swaggerDesign.json');
+const swaggerDocument = require('../swagger.json');
 
+// Use Swagger in application
+route.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-
-
-route.use('/api-docs', swaggerUi.serve);
-route.get('/api-docs', swaggerUi.setup(swaggerDocument));
-
+// Export routes object
 module.exports = route;
