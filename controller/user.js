@@ -5,13 +5,12 @@ var User = require("../model/User");
 
 //Get all
 const getUsers = async (req, res, next) => {
-<<<<<<< HEAD
-  try {
-    const result = await User.find({});
-=======
+
+  
+  try { 
   // #swagger.tags = ['User']
   const result = await User.find( {});
->>>>>>> 35e6d56d1cdd731335985c180da52672f4588f8c
+  
     res.status(200).json(result);
   } catch {
     res.status(500).json(result);
@@ -20,13 +19,9 @@ const getUsers = async (req, res, next) => {
 
 //Get One
 const getUser = async (req, res, next) => {
-<<<<<<< HEAD
-  try {
-    const userId = new ObjectId(req.params.id);
-=======
   // #swagger.tags = ['User']
+  try {
   const userId = new ObjectId(req.params.id);
->>>>>>> 35e6d56d1cdd731335985c180da52672f4588f8c
     const result = await User.findOne({ _id: userId });
     res.status(200).json(result);
   } catch {
@@ -36,13 +31,10 @@ const getUser = async (req, res, next) => {
 
 //Create
 const createUser = async (req, res) => {
-<<<<<<< HEAD
+
   try {
-    var user = new User({
-=======
   // #swagger.tags = ['User']
   var user = new User({
->>>>>>> 35e6d56d1cdd731335985c180da52672f4588f8c
       title: req.body.title,
       description: req.body.description,
     });
@@ -55,13 +47,10 @@ const createUser = async (req, res) => {
 
 //Update
 const updateUser = async (req, res) => {
-<<<<<<< HEAD
+
   try {
-    const user_id = new ObjectId(req.params.id);
-=======
   // #swagger.tags = ['User']
   const user_id = new ObjectId(req.params.id);
->>>>>>> 35e6d56d1cdd731335985c180da52672f4588f8c
     var user = {
       title: req.body.title,
       description: req.body.description,
@@ -76,7 +65,7 @@ const updateUser = async (req, res) => {
 //Delete
 
 const deleteUser = async (req, res) => {
-<<<<<<< HEAD
+    // #swagger.tags = ['User']
   try {
     const user_id = new ObjectId(req.params.id);
     const result = await User.findByIdAndDelete(user_id);
@@ -85,10 +74,6 @@ const deleteUser = async (req, res) => {
     res.status(500).json(result);
   }
 };
-=======
-  // #swagger.tags = ['User']
-  const user_id = new ObjectId(req.params.id);
-  const result = await User.findByIdAndDelete(user_id)
->>>>>>> 35e6d56d1cdd731335985c180da52672f4588f8c
+
 
 module.exports = { getUsers, getUser, createUser, updateUser, deleteUser };

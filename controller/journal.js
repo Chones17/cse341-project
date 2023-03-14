@@ -41,9 +41,7 @@ const updateJournal = async (req, res) => {
 const result = await Journal.findByIdAndUpdate(user_id, journal)
 
     res.status(200).json(result);
-  } catch {
-    res.status(500).json(result);
-  }
+  
 };
 
 //Delete
@@ -55,3 +53,5 @@ const deleteJournal = async (req, res) => {
 
   res.status(200).json(result);
 }
+
+module.exports = { getJournals, getJournal, createJournal, updateJournal, deleteJournal };
