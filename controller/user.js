@@ -5,12 +5,9 @@ var User = require("../model/User");
 
 //Get all
 const getUsers = async (req, res, next) => {
-
-  
-  try { 
-  // #swagger.tags = ['User']
-  const result = await User.find( {});
-  
+  try {
+    // #swagger.tags = ['User']
+    const result = await User.find({});
     res.status(200).json(result);
   } catch {
     res.status(500).json(result);
@@ -21,7 +18,7 @@ const getUsers = async (req, res, next) => {
 const getUser = async (req, res, next) => {
   // #swagger.tags = ['User']
   try {
-  const userId = new ObjectId(req.params.id);
+    const userId = new ObjectId(req.params.id);
     const result = await User.findOne({ _id: userId });
     res.status(200).json(result);
   } catch {
@@ -31,10 +28,9 @@ const getUser = async (req, res, next) => {
 
 //Create
 const createUser = async (req, res) => {
-
   try {
-  // #swagger.tags = ['User']
-  var user = new User({
+    // #swagger.tags = ['User']
+    var user = new User({
       title: req.body.title,
       description: req.body.description,
     });
@@ -47,10 +43,9 @@ const createUser = async (req, res) => {
 
 //Update
 const updateUser = async (req, res) => {
-
   try {
-  // #swagger.tags = ['User']
-  const user_id = new ObjectId(req.params.id);
+    // #swagger.tags = ['User']
+    const user_id = new ObjectId(req.params.id);
     var user = {
       title: req.body.title,
       description: req.body.description,
@@ -65,7 +60,7 @@ const updateUser = async (req, res) => {
 //Delete
 
 const deleteUser = async (req, res) => {
-    // #swagger.tags = ['User']
+  // #swagger.tags = ['User']
   try {
     const user_id = new ObjectId(req.params.id);
     const result = await User.findByIdAndDelete(user_id);
@@ -74,6 +69,5 @@ const deleteUser = async (req, res) => {
     res.status(500).json(result);
   }
 };
-
 
 module.exports = { getUsers, getUser, createUser, updateUser, deleteUser };

@@ -5,10 +5,9 @@ var Topic = require("../model/Topic");
 
 //Get all
 const getTopics = async (req, res, next) => {
-
   try {
-  // #swagger.tags = ['Topic']
-  const result = await Topic.find( {});
+    // #swagger.tags = ['Topic']
+    const result = await Topic.find({});
     res.status(200).json(result);
   } catch {
     res.status(500).json(result);
@@ -17,11 +16,9 @@ const getTopics = async (req, res, next) => {
 
 //Get One
 const getTopic = async (req, res, next) => {
-
   try {
-
-  // #swagger.tags = ['Topic']
-  const userId = new ObjectId(req.params.id);
+    // #swagger.tags = ['Topic']
+    const userId = new ObjectId(req.params.id);
     const result = await Topic.findOne({ _id: userId });
     res.status(200).json(result);
   } catch {
@@ -31,10 +28,9 @@ const getTopic = async (req, res, next) => {
 
 //Create
 const createTopic = async (req, res) => {
-
   try {
- // #swagger.tags = ['Topic']
-  var topic = new Topic({
+    // #swagger.tags = ['Topic']
+    var topic = new Topic({
       title: req.body.title,
       description: req.body.description,
     });
@@ -48,8 +44,8 @@ const createTopic = async (req, res) => {
 //Update
 const updateTopic = async (req, res) => {
   try {
-  // #swagger.tags = ['Topic']
-  const user_id = new ObjectId(req.params.id);
+    // #swagger.tags = ['Topic']
+    const user_id = new ObjectId(req.params.id);
     var topic = {
       title: req.body.title,
       description: req.body.description,
@@ -63,7 +59,7 @@ const updateTopic = async (req, res) => {
 
 //Delete
 const deleteTopic = async (req, res) => {
-// #swagger.tags = ['Topic']
+  // #swagger.tags = ['Topic']
   try {
     const user_id = new ObjectId(req.params.id);
     const result = await Topic.findByIdAndDelete(user_id);
@@ -72,8 +68,5 @@ const deleteTopic = async (req, res) => {
     res.status(500).json(result);
   }
 };
-
-
-
 
 module.exports = { getTopics, getTopic, createTopic, updateTopic, deleteTopic };
