@@ -1,73 +1,111 @@
-const mongodb = require("../config/connect");
-const ObjectId = require("mongodb").ObjectId;
+// Require the User model
+const User = require("../model/User");
 
-var User = require("../model/User");
-
-//Get all
-const getUsers = async (req, res, next) => {
-  try {
+/**
+ * Controller function to retrieve all Users
+ * @param { object } req - The HTTP request
+ * @param { object } res - The HTTP response
+ */
+const getUsers = async (req, res) => {
+    
     // #swagger.tags = ['User']
-    const result = await User.find({});
-    res.status(200).json(result);
-  } catch {
-    res.status(500).json(result);
-  }
-};
 
-//Get One
-const getUser = async (req, res, next) => {
-  // #swagger.tags = ['User']
-  try {
-    const userId = new ObjectId(req.params.id);
-    const result = await User.findOne({ _id: userId });
-    res.status(200).json(result);
-  } catch {
-    res.status(500).json(result);
-  }
-};
-
-//Create
-const createUser = async (req, res) => {
-  try {
-    // #swagger.tags = ['User']
-    var user = new User({
-      title: req.body.title,
-      description: req.body.description,
+    await User.find().exec().then(results => {
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200);
+        res.json(results);
+    }).catch(error => {
+        res.status(500);
+        res.json(error || 'An error occured while sending the request.');
     });
-    const result = await user.save();
-    res.status(200).json(result);
-  } catch {
-    res.status(500).json(result);
-  }
-};
+}
 
-//Update
-const updateUser = async (req, res) => {
-  try {
+/**
+ * Controller function to retrieve a User
+ * @param { object } req - The HTTP request
+ * @param { object } res - The HTTP response
+ */
+const getUser = async (req, res) => {
+    
     // #swagger.tags = ['User']
-    const user_id = new ObjectId(req.params.id);
-    var user = {
-      title: req.body.title,
-      description: req.body.description,
+
+    await User.findOne({ _id: req.params.id }).exec().then(results => {
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200);
+        res.json(results);
+    }).catch(error => {
+        res.status(500);
+        res.json(error || 'An error occured while sending the request.');
+    });
+}
+
+/**
+ * Controller function to add a User
+ * @param { object } req - The HTTP request
+ * @param { object } res - The HTTP response
+ */
+const postUser = async (req, res) => {
+    
+    // #swagger.tags = ['User']
+
+    // Set the request body
+    const User = {
+        githubId: req.body.githubId,
+        userName: req.body.userName,
+        email: req.body.email
     };
-    const result = await User.findByIdAndUpdate(user_id, user);
-    res.status(200).json(result);
-  } catch {
-    res.status(500).json(result);
-  }
-};
+    
+    await User.create(User).then(() => {
+        res.status(201);
+        res.send();
+    }).catch(error => {
+        res.status(500);
+        res.json(error || 'An error occured while sending the request.');
+    });
+}
 
-//Delete
+/**
+ * Controller function to update User
+ * @param { object } req - The HTTP request
+ * @param { object } res - The HTTP response
+ */
+const putUser = async (req, res) => {
 
+    // #swagger.tags = ['User']
+
+    // Set the request body
+    const User = {
+        githubId: req.body.githubId,
+        userName: req.body.userName,
+        email: req.body.email
+    };
+
+    await User.updateOne({ _id: req.params.id }, User).then(() => {
+        res.status(204);
+        res.send();
+    }).catch(error => {
+        res.status(500);
+        res.json(error || 'An error occurred while sending the request.');
+    });
+}
+
+/**
+ * Controller function to delete a Note
+ * @param { object } req - The HTTP request
+ * @param { object } res - The HTTP response
+ */
 const deleteUser = async (req, res) => {
-  // #swagger.tags = ['User']
-  try {
-    const user_id = new ObjectId(req.params.id);
-    const result = await User.findByIdAndDelete(user_id);
-    res.status(200).json(result);
-  } catch {
-    res.status(500).json(result);
-  }
-};
 
-module.exports = { getUsers, getUser, createUser, updateUser, deleteUser };
+    // #swagger.tags = ['User']
+
+    await User.deleteOne({ _id: req.params.id }).then(() => {
+        res.status(200);
+        res.send();
+    }).catch(error => {
+        res.status(500);
+        res.json(error || 'An error occurred while sending the request.');
+    });
+}
+
+// Export User controller functions
+module.exports = { getUsers, getUser, postUser, putUser, deleteUser };
