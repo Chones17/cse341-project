@@ -3,34 +3,49 @@ const swaggerAutogen = require('swagger-autogen')();
 
 // Create swagger document
 const doc = {
-  info: {
-    title: 'My Scripture Journal API',
-    description: 'API for keeping a Scripture Journal'
-  },
-  host: 'cse341-project-production.onrender.com',
-  schemes: ['https'],
-  tags: [
-    {
-      name: 'Authentication',
-      description: 'These are authentication routes'
+    info: {
+        title: 'My Scripture Journal API',
+        description: 'API for keeping a Scripture Journal'
     },
-    {
-      name: 'Journal',
-      description: 'A collection of notes'
+    host: 'cse341-project-production.onrender.com',
+    schemes: ['https'],
+    securityDefinitions: {
+        github_oauth: {
+        type: 'oauth2',
+        authorizationUrl: 'https://cse341-project-production.onrender.com/auth/github',
+        flow: 'accessCode',
+        scopes: {
+            'read:user': 'Read the user'
+        }
+        }
     },
-    {
-      name: 'Note',
-      description: 'These are notes or thoughts about the scripture'
+    security: {
+        github_oauth: [
+        'read:user'
+        ]
     },
-    {
-      name: 'Topic',
-      description: 'These topics can be used to help differentiate different study topics'
-    },
-    {
-      name: 'User',
-      description: 'Keeps Track of the user and their credentials'
-    }
-  ]
+    tags: [
+        {
+        name: 'Authentication',
+        description: 'These are authentication routes'
+        },
+        {
+        name: 'Journal',
+        description: 'A collection of notes'
+        },
+        {
+        name: 'Note',
+        description: 'These are notes or thoughts about the scripture'
+        },
+        {
+        name: 'Topic',
+        description: 'These topics can be used to help differentiate different study topics'
+        },
+        {
+        name: 'User',
+        description: 'Keeps Track of the user and their credentials'
+        }
+    ]
 };
 
 // Create output file and set endpoint file
