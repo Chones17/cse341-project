@@ -1,19 +1,20 @@
 // Require the Journal router, validation middleware, and controller
 const route = require('express').Router();
 const controller = require('../controller/journal');
+const auth = require('../middleware/auth');
 
 // Handles any http GET requests
-route.get('/', controller.getJournals);
-route.get('/:id', controller.getJournal);
+route.get('/', auth, controller.getJournals);
+route.get('/:id', auth, controller.getJournal);
 
 // Handles any http POST requests
-route.post('/', controller.createJournal);
+route.post('/', auth, controller.postJournal);
 
 // Handles any http PUT requests
-route.put('/:id', controller.updateJournal);
+route.put('/:id', auth, controller.putJournal);
 
 // Handles any http DELETE requests
-route.delete('/:id', controller.deleteJournal);
+route.delete('/:id', auth, controller.deleteJournal);
 
 // Export route object
 module.exports = route;
