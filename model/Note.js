@@ -1,6 +1,7 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+// Require Mongoose Schema object and model method
+const { Schema, model } = require('mongoose');
 
+// Create Note Schema
 const noteSchema = new Schema({
     entryDate: {
         type: Date,
@@ -39,4 +40,5 @@ const noteSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model('Note', noteSchema);
+// Export Note Schema
+module.exports = model('Note', noteSchema);
