@@ -1,5 +1,5 @@
 // Require Mongoose to make database connection
-const mongoose = require('mongoose');
+const mongoose = require('mongoose').set('strictQuery', false);
 
 /**
  * Create a connection with MongoDB
