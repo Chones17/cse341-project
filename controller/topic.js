@@ -1,72 +1,88 @@
-const mongodb = require("../config/connect");
-const ObjectId = require("mongodb").ObjectId;
+// Require the Topic model
+const Topic = require("../model/Topic");
 
-var Topic = require("../model/Topic");
-
-//Get all
-const getTopics = async (req, res, next) => {
-  try {
+/**
+ * Controller function to retrieve all Topics
+ * @param { object } req - The HTTP request
+ * @param { object } res - The HTTP response
+ */
+const getTopics = async (req, res) => {
+    
     // #swagger.tags = ['Topic']
-    const result = await Topic.find({});
-    res.status(200).json(result);
-  } catch {
-    res.status(500).json(result);
-  }
-};
 
-//Get One
-const getTopic = async (req, res, next) => {
-  try {
-    // #swagger.tags = ['Topic']
-    const userId = new ObjectId(req.params.id);
-    const result = await Topic.findOne({ _id: userId });
-    res.status(200).json(result);
-  } catch {
-    res.status(500).json(result);
-  }
-};
-
-//Create
-const createTopic = async (req, res) => {
-  try {
-    // #swagger.tags = ['Topic']
-    var topic = new Topic({
-      title: req.body.title,
-      description: req.body.description,
+    await Topic.find().exec().then(results => {
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200);
+        res.json(results);
+    }).catch(error => {
+        res.status(500);
+        res.json(error || 'An error occured while sending the request.');
     });
-    const result = await topic.save();
-    res.status(200).json(result);
-  } catch {
-    res.status(500).json(result);
-  }
-};
+}
 
-//Update
-const updateTopic = async (req, res) => {
-  try {
+/**
+ * Controller function to add a Topic
+ * @param { object } req - The HTTP request
+ * @param { object } res - The HTTP response
+ */
+const postTopic = async (req, res) => {
+    
     // #swagger.tags = ['Topic']
-    const user_id = new ObjectId(req.params.id);
-    var topic = {
-      title: req.body.title,
-      description: req.body.description,
+
+    // Set the request body
+    const topic = {
+        topic: req.body.topic,
     };
-    const result = await Topic.findByIdAndUpdate(user_id, topic);
-    res.status(200).json(result);
-  } catch {
-    res.status(500).json(result);
-  }
-};
+    
+    await Topic.create(topic).then(() => {
+        res.status(201);
+        res.send();
+    }).catch(error => {
+        res.status(500);
+        res.json(error || 'An error occured while sending the request.');
+    });
+}
 
-//Delete
+/**
+ * Controller function to update Topic
+ * @param { object } req - The HTTP request
+ * @param { object } res - The HTTP response
+ */
+const putTopic = async (req, res) => {
+
+    // #swagger.tags = ['Topic']
+
+    // Set the request body
+    const topic = {
+        topic: req.body.topic,
+    };
+
+    await Topic.updateOne({ _id: req.params.id }, topic).then(() => {
+        res.status(204);
+        res.send();
+    }).catch(error => {
+        res.status(500);
+        res.json(error || 'An error occurred while sending the request.');
+    });
+}
+
+/**
+ * Controller function to delete a Topic
+ * @param { object } req - The HTTP request
+ * @param { object } res - The HTTP response
+ */
 const deleteTopic = async (req, res) => {
-  // #swagger.tags = ['Topic']
-  try {
-    const user_id = new ObjectId(req.params.id);
-    const result = await Topic.findByIdAndDelete(user_id);
-    res.status(200).json(result);
-  } catch {
-    res.status(500).json(result);
-  }
-};
 
-module.exports = { getTopics, getTopic, createTopic, updateTopic, deleteTopic };
+    // #swagger.tags = ['Topic']
+
+    await Topic.deleteOne({ _id: req.params.id }).then(() => {
+        res.status(200);
+        res.send();
+    }).catch(error => {
+        res.status(500);
+        res.json(error || 'An error occurred while sending the request.');
+    });
+}
+
+// Export Topic controller functions
+module.exports = { getTopics, postTopic, putTopic, deleteTopic };
