@@ -63,7 +63,7 @@ This project is aimed at helping aid scripture study by giving the end user a pl
     - [x] Swagger.json file
     - [x] Organized by collection
     - [x] API route setup
-    - [ ] Documentation can test each endpoint
+    - [x] Documentation can test each endpoint
 - Data Validation
     - [ ] Install dependency Express-validator
     - [ ] Data validation for each GET, POST, PUT, and DELETE route
