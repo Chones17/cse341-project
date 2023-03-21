@@ -3,6 +3,7 @@
  * @param { object } req - The HTTP request
  * @param { object } res - The HTTP response
  */
+const path = require('path');
 const index = async (req, res) => {
 
     // #swagger.ignore = true
@@ -18,8 +19,8 @@ const index = async (req, res) => {
 const login = async (req, res) => {
 
     // #swagger.tags = ['Authentication']
-
-    await res.status(200).send('This is the login page.');
+    //await res.status(200).send('This is the login page.');
+    await res.sendFile(path.join(__dirname, '../static/index.html'));
 }
 
 /**

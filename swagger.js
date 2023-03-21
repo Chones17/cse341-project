@@ -7,7 +7,7 @@ const doc = {
         title: 'My Scripture Journal API',
         description: 'API for keeping a Scripture Journal'
     },
-    host: 'cse341-project-production.onrender.com',
+    host: 'https://cse341-project-production.onrender.com/',
     schemes: ['https'],
     securityDefinitions: {
         github_oauth: {

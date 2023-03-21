@@ -19,7 +19,8 @@ const auth = () => {
     passport.use(new GitHubStrategy({
         clientID: process.env.GITHUB_CLIENT_ID,
         clientSecret: process.env.GITHUB_CLIENT_SECRET,
-        callbackURL: 'https://cse341-project-production.onrender.com/auth/github/callback'
+        callbackURL: 'http://localhost:3000/auth/github/callback'
+        //callbackURL: 'https://cse341-project-production.onrender.com/auth/github/callback'
     },
     (accessToken, refreshToken, profile, done) => {
         User.findOrCreate({ githubId: profile.id }, function (err, user) {

@@ -2,6 +2,7 @@
 const route = require('express').Router();
 const controller = require('../controller/index');
 
+
 // Handles routes for project
 route.use('/api-docs', require('./swagger'));
 route.use('/auth', require('./auth'));
