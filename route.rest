@@ -3,14 +3,198 @@
 ### HTTP GET Request - Landing Page
 GET http://localhost:3000 HTTP/1.1
 
-### HTTP GET Request - Notes
+###Authentication
+
+### HTTP Login Request - Authentication
+GET http://localhost:3000/authentication/login/ HTTP/1.1
+
+### HTTP Logout Request - Authentication
+GET http://localhost:3000/authentication/logout HTTP/1.1
+
+###Journal
+
+### HTTP GET All Request - Journal
+GET http://localhost:3000/journal HTTP/1.1
+
+### HTTP POST request - Journal
+POST http://localhost:3000/journal HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Personal study about prayer.",
+    "description": "Prayer is a wonderful thing.",
+    "createDate": "01-01-2023"
+}
+
+### HTTP GET ID Request - Journal
+GET http://localhost:3000/journal/640a1afb387774afa60eafaa HTTP/1.1
+
+### HTTP PUT Request - Journal
+PUT http://localhost:3000/journal/640a1afb387774afa60eafaa HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Personal study about fasting.",
+    "description": "Fasting is a wonderful thing.",
+    "createDate": "02-01-2023"
+}
+
+### HTTP DELETE Request - Journal
+DELETE http://localhost:3000/journal/640a1afb387774afa60eafaa HTTP/1.1
+
+###Note
+
+### HTTP GET All Request - Note
 GET http://localhost:3000/note HTTP/1.1
 
-### HTTP GET Request - Notes
+### HTTP POST Request - Note
+POST http://localhost:3000/note HTTP/1.1
+Content-Type: application/json
+
+{
+    "entryDate": "01-01-2023",
+    "canon": "Book of Mormon",
+    "book": "Alma",
+    "chapter": 32,
+    "verse": 21,
+    "note": "Good verse."
+}
+
+### HTTP GET ID Request - Note
 GET http://localhost:3000/note/640a1afb387774afa60eafaa HTTP/1.1
 
-### HTTP POST request - Notes
-POST http://localhost:3000/note HTTP/1.1
+### HTTP PUT Request - Note
+PUT http://localhost:3000/note/640a1afb387774afa60eafaa HTTP/1.1
+Content-Type: application/json
+
+{
+    "entryDate": "03-08-2023",
+    "canon": "Bible",
+    "book": "Genesis",
+    "chapter": 2,
+    "verse": 24,
+    "note": "Great verse."
+}
+
+### HTTP DELETE Request - Note
+DELETE http://localhost:3000/note/640a1afb387774afa60eafaa HTTP/1.1
+
+###Topic
+
+### HTTP GET Request - Topic
+GET http://localhost:3000/topic HTTP/1.1
+
+### HTTP POST request - Topic
+POST http://localhost:3000/topic HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Faith",
+    "description": "Faith is like a seed."
+}
+
+### HTTP PUT Request - Topic
+PUT http://localhost:3000/topic/640a1afb387774afa60eafaa HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Tithing",
+    "description": "Tithing is giving 10% of our earnings to the Lord."
+}
+
+### HTTP DELETE Request - Topic
+DELETE http://localhost:3000/topic/640a1afb387774afa60eafaa HTTP/1.1
+
+### User
+
+### HTTP GET All Request - User
+GET http://localhost:3000/user HTTP/1.1
+
+### HTTP POST request - User
+POST http://localhost:3000/user HTTP/1.1
+Content-Type: application/json
+
+{
+    "githubId": "8313847365",
+    "userName": "newUser1234",
+    "email": "howdy@email.com"
+}
+
+### HTTP GET ID Request - User
+GET http://localhost:3000/user/640a1afb387774afa60eafaa HTTP/1.1
+
+### HTTP PUT Request - User
+PUT http://localhost:3000/user/640a1afb387774afa60eafaa HTTP/1.1
+Content-Type: application/json
+
+{
+    "githubId": "8313847365",
+    "userName": "newUser5678",
+    "email": "hola@email.com"
+}
+
+### HTTP DELETE Request - User
+DELETE http://localhost:3000/user/640a1afb387774afa60eafaa HTTP/1.1
+
+###Default
+
+### HTTP Get Request - Default
+GET http://localhost:3000/default/auth/github/ HTTP/1.1
+
+### HTTP Callback Request - Default
+GET http://localhost:3000/default/auth/github/callback/ HTTP/1.1
+
+# ---------------- PRODUCTION ------------------- #
+
+### HTTPS GET Request - Landing Page
+GET https://cse341-project.onrender.com HTTP/1.1
+
+###Authentication
+
+### HTTP Login Request - Authentication
+GET http://cse341-project.onrender.com/authentication/login/ HTTP/1.1
+
+### HTTP Logout Request - Authentication
+GET http://cse341-project.onrender.com/authentication/logout HTTP/1.1
+
+###Journal
+
+### HTTP GET All Request - Journal
+GET http://cse341-project.onrender.com/journal HTTP/1.1
+
+### HTTP POST request - Journal
+POST http://cse341-project.onrender.com/journal HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Personal study about prayer",
+    "description": "Prayer is a wonderful thing",
+    "createDate": "01-01-2023"
+}
+
+### HTTP GET ID Request - Journal
+GET http://cse341-project.onrender.com/journal/640a1afb387774afa60eafaa HTTP/1.1
+
+### HTTP PUT Request - Journal
+PUT http://cse341-project.onrender.com/journal/640a1afb387774afa60eafaa HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Personal study about fasting",
+    "description": "Fasting is a wonderful thing",
+    "createDate": "02-01-2023"
+}
+
+### HTTP DELETE Request - Journal
+DELETE http://cse341-project.onrender.com/journal/640a1afb387774afa60eafaa HTTP/1.1
+
+###Note
+
+### HTTP GET All Request - Note
+GET http://cse341-project.onrender.com/note HTTP/1.1
+
+### HTTP POST Request - Note
+POST http://cse341-project.onrender.com/note HTTP/1.1
 Content-Type: application/json
 
 {
@@ -22,34 +206,32 @@ Content-Type: application/json
     "note": "Good verse"
 }
 
-### HTTP PUT request - Notes
-PUT http://localhost:3000/note/640a1afb387774afa60eafaa HTTP/1.1
+### HTTP GET ID Request - Note
+GET http://cse341-project.onrender.com/note/640a1afb387774afa60eafaa HTTP/1.1
+
+### HTTP PUT Request - Note
+PUT http://cse341-project.onrender.com/note/640a1afb387774afa60eafaa HTTP/1.1
 Content-Type: application/json
 
 {
     "entryDate": "03-08-2023",
-    "canon": "Book of Mormon",
-    "book": "Alma",
-    "chapter": 22,
-    "verse": 11,
-    "note": "Good verse"
+    "canon": "Bible",
+    "book": "Genesis",
+    "chapter": 2,
+    "verse": 24,
+    "note": "Great verse."
 }
 
-### HTTP DELETE Request - Notes
-DELETE http://localhost:3000/note/640a1afb387774afa60eafaa HTTP/1.1
+### HTTP DELETE Request - Note
+DELETE http://cse341-project.onrender.com/note/640a1afb387774afa60eafaa HTTP/1.1
 
-### HTTP POST request - Journals
-POST http://localhost:3000/journal HTTP/1.1
-Content-Type: application/json
+###Topic
 
-{
-    "title": "Personal study about prayer",
-    "description": "Prayer is a wonderful thing",
-    "createDate": "01-01-2023"
-}
+### HTTP GET Request - Topic
+GET http://cse341-project.onrender.com/topic HTTP/1.1
 
-### HTTP POST request - Topics
-POST http://localhost:3000/topic HTTP/1.1
+### HTTP POST request - Topic
+POST http://cse341-project.onrender.com/topic HTTP/1.1
 Content-Type: application/json
 
 {
@@ -57,8 +239,25 @@ Content-Type: application/json
     "description": "Faith is like a seed"
 }
 
-### HTTP POST request - Users
-POST http://localhost:3000/user HTTP/1.1
+### HTTP PUT Request - Topic
+PUT http://cse341-project.onrender.com/topic/640a1afb387774afa60eafaa HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Tithing",
+    "description": "Tithing is giving 10% of our earnings to the Lord."
+}
+
+### HTTP DELETE Request - Topic
+DELETE http://cse341-project.onrender.com/topic/640a1afb387774afa60eafaa HTTP/1.1
+
+### User
+
+### HTTP GET All Request - User
+GET http://cse341-project.onrender.com/user HTTP/1.1
+
+### HTTP POST request - User
+POST http://cse341-project.onrender.com/user HTTP/1.1
 Content-Type: application/json
 
 {
@@ -67,7 +266,26 @@ Content-Type: application/json
     "email": "howdy@email.com"
 }
 
-# ---------------- PRODUCTION ------------------- #
+### HTTP GET ID Request - User
+GET http://cse341-project.onrender.com/user/640a1afb387774afa60eafaa HTTP/1.1
 
-### HTTPS GET Request - Landing Page
-GET https://cse341-project.onrender.com HTTP/1.1
+### HTTP PUT Request - User
+PUT http://cse341-project.onrender.com/user/640a1afb387774afa60eafaa HTTP/1.1
+Content-Type: application/json
+
+{
+    "githubId": "8313847365",
+    "userName": "newUser5678",
+    "email": "hola@email.com"
+}
+
+### HTTP DELETE Request - User
+DELETE http://cse341-project.onrender.com/user/640a1afb387774afa60eafaa HTTP/1.1
+
+###Default
+
+### HTTP Get Request - Default
+GET http://cse341-project.onrender.com/default/auth/github/ HTTP/1.1
+
+### HTTP Callback Request - Default
+GET http://cse341-project.onrender.com/default/auth/github/callback/ HTTP/1.1
