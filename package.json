@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node app.js",
     "devStart": "nodemon app.js",
-    "readme": "node readme.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "swagger": "node ./swagger.js"
   },
@@ -21,14 +20,13 @@
   },
   "homepage": "https://github.com/Chones17/cse341-project#readme",
   "dependencies": {
+    "connect-mongodb-session": "^3.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "express-validator": "^6.15.0",
     "mongoose": "^7.0.1",
     "swagger-autogen": "^2.23.1",
-    "swagger-ui-express": "^4.6.2",
-    "validator": "^13.9.0"
+    "swagger-ui-express": "^4.6.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.21",

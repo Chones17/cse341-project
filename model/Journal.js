@@ -1,6 +1,7 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+// Require Mongoose Schema object and model method
+const { Schema, model } = require('mongoose');
 
+// Create Journal Schema
 const journalSchema = new Schema({
     title: {
         type: String,
@@ -14,6 +15,7 @@ const journalSchema = new Schema({
         type: Date,
         required: true
     }
-})
+});
 
-module.exports = mongoose.model('Journal', journalSchema);
+// Export Journal Schema
+module.exports = model('Journal', journalSchema);

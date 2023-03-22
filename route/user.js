@@ -2,21 +2,18 @@
 const route = require('express').Router();
 const controller = require('../controller/user');
 
-//validation
-const validation = require('../middleware/validate');
-
 // Handles any http GET requests
-route.get('/', controller.getUsers);
-route.get('/:id', controller.getUser);
+route.get('/', auth, controller.getUsers);
+route.get('/:id', auth, controller.getUser);
 
 // Handles any http POST requests
-route.post('/',validation.saveUser, controller.createUser);
+route.post('/', controller.createUser);
 
 // Handles any http PUT requests
-route.put('/:id', validation.saveUser, controller.updateUser);
+route.put('/:id', controller.updateUser);
 
 // Handles any http DELETE requests
-route.delete('/:id', controller.deleteUser);
+route.delete('/:id', auth, controller.deleteUser);
 
 // Export route object
 module.exports = route;

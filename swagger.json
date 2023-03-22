@@ -5,7 +5,7 @@
     "description": "API for keeping a Scripture Journal",
     "version": "1.0.0"
   },
-  "host": "cse341-project-production.onrender.com",
+  "host": "https://cse341-project-production.onrender.com/",
   "basePath": "/",
   "tags": [
     {
@@ -32,18 +32,17 @@
   "schemes": [
     "https"
   ],
-  "paths": {
-    "/": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
+  "securityDefinitions": {
+    "github_oauth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://cse341-project-production.onrender.com/auth/github",
+      "flow": "accessCode",
+      "scopes": {
+        "read:user": "Read the user"
       }
-    },
+    }
+  },
+  "paths": {
     "/login": {
       "get": {
         "tags": [
@@ -72,16 +71,36 @@
         }
       }
     },
+    "/auth/github": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/auth/github/callback": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
     "/journal/": {
       "get": {
         "tags": [
           "Journal"
         ],
         "description": "",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -102,6 +121,9 @@
                 },
                 "description": {
                   "example": "any"
+                },
+                "createDate": {
+                  "example": "any"
                 }
               }
             }
@@ -110,6 +132,12 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -120,6 +148,9 @@
           "Journal"
         ],
         "description": "",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -131,6 +162,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -157,6 +191,9 @@
                 },
                 "description": {
                   "example": "any"
+                },
+                "createDate": {
+                  "example": "any"
                 }
               }
             }
@@ -165,6 +202,12 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -184,6 +227,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -194,10 +240,16 @@
           "Note"
         ],
         "description": "",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -238,6 +290,12 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -248,6 +306,9 @@
           "Note"
         ],
         "description": "",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -259,6 +320,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -305,6 +369,12 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -324,48 +394,9 @@
         "responses": {
           "200": {
             "description": "OK"
-          }
-        }
-      }
-    },
-    "/note/{date}": {
-      "get": {
-        "tags": [
-          "Note"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "date",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/note/{topic}": {
-      "get": {
-        "tags": [
-          "Note"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "topic",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -376,10 +407,16 @@
           "Topic"
         ],
         "description": "",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -395,10 +432,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "title": {
-                  "example": "any"
-                },
-                "description": {
+                "topic": {
                   "example": "any"
                 }
               }
@@ -408,6 +442,12 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -431,10 +471,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "title": {
-                  "example": "any"
-                },
-                "description": {
+                "topic": {
                   "example": "any"
                 }
               }
@@ -444,6 +481,12 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -463,6 +506,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -473,10 +519,16 @@
           "User"
         ],
         "description": "",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -492,10 +544,13 @@
             "schema": {
               "type": "object",
               "properties": {
-                "title": {
+                "githubId": {
                   "example": "any"
                 },
-                "description": {
+                "userName": {
+                  "example": "any"
+                },
+                "email": {
                   "example": "any"
                 }
               }
@@ -505,6 +560,12 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -515,6 +576,9 @@
           "User"
         ],
         "description": "",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -526,6 +590,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -547,10 +614,13 @@
             "schema": {
               "type": "object",
               "properties": {
-                "title": {
+                "githubId": {
                   "example": "any"
                 },
-                "description": {
+                "userName": {
+                  "example": "any"
+                },
+                "email": {
                   "example": "any"
                 }
               }
@@ -560,6 +630,12 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -579,9 +655,17 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     }
+  },
+  "security": {
+    "github_oauth": [
+      "read:user"
+    ]
   }
 }

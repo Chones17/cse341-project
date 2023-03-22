@@ -1,15 +1,13 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+// Require Mongoose Schema object and model method
+const { Schema, model } = require('mongoose');
 
+// Create Topic Schema
 const topicSchema = new Schema({
-    title: {
-        type: String,
-        required: true
-    },
-    description: {
+    topic: {
         type: String,
         required: true
     }
 })
 
-module.exports = mongoose.model('Topic', topicSchema);
+// Export Topic Schema
+module.exports = model('Topic', topicSchema);

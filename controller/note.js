@@ -1,82 +1,117 @@
-const mongodb = require("../config/connect");
-const ObjectId = require("mongodb").ObjectId;
-const mongoose = require("mongoose");
+// Require the Note model
+const Note = require("../model/Note");
 
-var Note = require("../model/Note");
-
-//Get all
-const getNotes = async (req, res, next) => {
-  try {
+/**
+ * Controller function to retrieve all Notes
+ * @param { object } req - The HTTP request
+ * @param { object } res - The HTTP response
+ */
+const getNotes = async (req, res) => {
+  
     // #swagger.tags = ['Note']
-    const result = await Note.find({});
-    res.status(200).json(result);
-  } catch {
-    res.status(500).json(result);
-  }
-};
 
-//Get One
-const getNote = async (req, res, next) => {
-  try {
-    // #swagger.tags = ['Note']
-    const userId = new ObjectId(req.params.id);
-
-    const result = await Note.findOne({ _id: userId });
-    res.status(200).json(result);
-  } catch {
-    res.status(500).json(result);
-  }
-};
-
-//Create
-const createNote = async (req, res) => {
-  try {
-    var note = new Note({
-      entryDate: req.body.entryDate,
-      canon: req.body.canon,
-      book: req.body.book,
-      chapter: req.body.chapter,
-      verse: req.body.verse,
-      note: req.body.note,
+    await Note.find().exec().then(results => {
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200);
+        res.json(results);
+    }).catch(error => {
+        res.status(500);
+        res.json(error || 'An error occured while sending the request.');
     });
-    const result = await note.save();
-    res.status(200).json(result);
-  } catch {
-    res.status(500).json(result);
-  }
 };
 
-//Update
-const updateNote = async (req, res) => {
-  try {
-    const user_id = new ObjectId(req.params.id);
+/**
+ * Controller function to retrieve a Note
+ * @param { object } req - The HTTP request
+ * @param { object } res - The HTTP response
+*/
+const getNote = async (req, res) => {
+  
     // #swagger.tags = ['Note']
-    var note = new Note({
-      entryDate: req.body.entryDate,
-      canon: req.body.canon,
-      book: req.body.book,
-      chapter: req.body.chapter,
-      verse: req.body.verse,
-      note: req.body.note,
+
+    await Note.findOne({ _id: req.params.id }).exec().then(results => {
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200);
+        res.json(results);
+    }).catch(error => {
+        res.status(500);
+        res.json(error || 'An error occured while sending the request.');
     });
-    const result = await note.save();
-    res.status(200).json(result);
-  } catch {
-    res.status(500).json(result);
-  }
 };
 
-//Delete
+/**
+ * Controller function to add a Note
+ * @param { object } req - The HTTP request
+ * @param { object } res - The HTTP response
+ */
+const postNote = async (req, res) => {
+    
+    // #swagger.tags = ['Note']
 
+    // Set the request body
+    const note = {
+        entryDate: req.body.entryDate,
+        canon: req.body.canon,
+        book: req.body.book,
+        chapter: req.body.chapter,
+        verse: req.body.verse,
+        note: req.body.note,
+    };
+    
+    await Note.create(note).then(() => {
+        res.status(201);
+        res.send();
+    }).catch(error => {
+        res.status(500);
+        res.json(error || 'An error occured while sending the request.');
+    });
+}
+
+/**
+ * Controller function to update Note
+ * @param { object } req - The HTTP request
+ * @param { object } res - The HTTP response
+ */
+const putNote = async (req, res) => {
+
+    // #swagger.tags = ['Note']
+
+    // Set the request body
+    const note = {
+        entryDate: req.body.entryDate,
+        canon: req.body.canon,
+        book: req.body.book,
+        chapter: req.body.chapter,
+        verse: req.body.verse,
+        note: req.body.note,
+    };
+
+    await Note.updateOne({ _id: req.params.id }, note).then(() => {
+        res.status(204);
+        res.send();
+    }).catch(error => {
+        res.status(500);
+        res.json(error || 'An error occurred while sending the request.');
+    });
+}
+
+/**
+ * Controller function to delete a Note
+ * @param { object } req - The HTTP request
+ * @param { object } res - The HTTP response
+ */
 const deleteNote = async (req, res) => {
-  try {
-    // #swagger.tags = ['Note']
-    const user_id = new ObjectId(req.params.id);
-    const result = await Note.findByIdAndDelete(user_id);
-    res.status(200).json(result);
-  } catch {
-    res.status(500).json(result);
-  }
-};
 
-module.exports = { getNotes, getNote, createNote, updateNote, deleteNote };
+    // #swagger.tags = ['Note']
+
+    await Note.deleteOne({ _id: req.params.id }).then(() => {
+        res.status(200);
+        res.send();
+    }).catch(error => {
+        res.status(500);
+        res.json(error || 'An error occurred while sending the request.');
+    });
+}
+
+// Export Note controller functions
+module.exports = { getNotes, getNote, postNote, putNote, deleteNote };

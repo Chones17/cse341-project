@@ -1,59 +1,111 @@
-const mongodb = require("../config/connect");
-const ObjectId = require("mongodb").ObjectId;
+// Require the Journal model
+const Journal = require("../model/Journal");
 
-var Journal = require("../model/Journal");
-
-//Get all
+/**
+ * Controller function to retrieve all Journals
+ * @param { object } req - The HTTP request
+ * @param { object } res - The HTTP response
+ */
 const getJournals = async (req, res) => {
-  // #swagger.tags = ['Journal']
-  const result = await Journal.find({});
-  res.status(200).json(result);
-};
+    
+    // #swagger.tags = ['Journal']
 
-//Get One
+    await Journal.find().exec().then(results => {
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200);
+        res.json(results);
+    }).catch(error => {
+        res.status(500);
+        res.json(error || 'An error occured while sending the request.');
+    });
+}
+
+/**
+ * Controller function to retrieve a Journal
+ * @param { object } req - The HTTP request
+ * @param { object } res - The HTTP response
+ */
 const getJournal = async (req, res) => {
-  // #swagger.tags = ['Journal']
-  const userId = new ObjectId(req.params.id);
-  const result = await Journal.findOne({ _id: userId });
-  res.status(200).json(result);
-};
+    
+    // #swagger.tags = ['Journal']
 
-//Create
-const createJournal = async (req, res) => {
-  // #swagger.tags = ['Journal']
-  var journal = new Journal({
-    title: req.body.title,
-    description: req.body.description,
-  });
-  const result = await journal.save();
-  res.status(200).json(result);
-};
+    await Journal.findOne({ _id: req.params.id }).exec().then(results => {
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200);
+        res.json(results);
+    }).catch(error => {
+        res.status(500);
+        res.json(error || 'An error occured while sending the request.');
+    });
+}
 
-//Update
-const updateJournal = async (req, res) => {
-  // #swagger.tags = ['Journal']
-  const user_id = new ObjectId(req.params.id);
-  var journal = {
-    title: req.body.title,
-    description: req.body.description,
-  };
-  const result = await Journal.findByIdAndUpdate(user_id, journal);
-  res.status(200).json(result);
-};
+/**
+ * Controller function to add a Journal
+ * @param { object } req - The HTTP request
+ * @param { object } res - The HTTP response
+ */
+const postJournal = async (req, res) => {
+    
+    // #swagger.tags = ['Journal']
 
-//Delete
+    // Set the request body
+    const journal = {
+        title: req.body.title,
+        description: req.body.description,
+        createDate: req.body.createDate
+    };
+    
+    await Journal.create(journal).then(() => {
+        res.status(201);
+        res.send();
+    }).catch(error => {
+        res.status(500);
+        res.json(error || 'An error occured while sending the request.');
+    });
+}
 
+/**
+ * Controller function to update Journal
+ * @param { object } req - The HTTP request
+ * @param { object } res - The HTTP response
+ */
+const putJournal = async (req, res) => {
+
+    // #swagger.tags = ['Journal']
+
+    // Set the request body
+    const journal = {
+        title: req.body.title,
+        description: req.body.description,
+        createDate: req.body.createDate
+    };
+
+    await Journal.updateOne({ _id: req.params.id }, journal).then(() => {
+        res.status(204);
+        res.send();
+    }).catch(error => {
+        res.status(500);
+        res.json(error || 'An error occurred while sending the request.');
+    });
+}
+
+/**
+ * Controller function to delete a Note
+ * @param { object } req - The HTTP request
+ * @param { object } res - The HTTP response
+ */
 const deleteJournal = async (req, res) => {
-  // #swagger.tags = ['Journal']
-  const user_id = new ObjectId(req.params.id);
-  const result = await Journal.findByIdAndDelete(user_id);
-  res.status(200).json(result);
-};
 
-module.exports = {
-  getJournals,
-  getJournal,
-  createJournal,
-  updateJournal,
-  deleteJournal,
-};
+    // #swagger.tags = ['Journal']
+
+    await Journal.deleteOne({ _id: req.params.id }).then(() => {
+        res.status(200);
+        res.send();
+    }).catch(error => {
+        res.status(500);
+        res.json(error || 'An error occurred while sending the request.');
+    });
+}
+
+// Export Journal controller functions
+module.exports = { getJournals, getJournal, postJournal, putJournal, deleteJournal };
