@@ -2,6 +2,9 @@
 const route = require('express').Router();
 const controller = require('../controller/note');
 
+//validation
+const validation = require('../middleware/validate');
+
 // Handles any http GET requests
 route.get('/', controller.getNotes);
 route.get('/:id', controller.getNote);
@@ -13,10 +16,10 @@ route.get('/:topic', (req, res) => {
     res.status(200).send('This is a topic')});
 
 // Handles any http POST requests
-route.post('/', controller.createNote);
+route.post('/', validation.saveNote, controller.createNote);
 
 // Handles any http PUT requests
-route.put('/:id', controller.updateNote);
+route.put('/:id', validation.saveNote, controller.updateNote);
 
 // Handles any http DELETE requests
 route.delete('/:id', controller.deleteNote);

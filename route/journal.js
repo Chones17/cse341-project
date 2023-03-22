@@ -2,15 +2,18 @@
 const route = require('express').Router();
 const controller = require('../controller/journal');
 
+// validation
+const validation = require('../middleware/validate');
+
 // Handles any http GET requests
 route.get('/', controller.getJournals);
 route.get('/:id', controller.getJournal);
 
 // Handles any http POST requests
-route.post('/', controller.createJournal);
+route.post('/', validation.saveJournal, controller.createJournal);
 
 // Handles any http PUT requests
-route.put('/:id', controller.updateJournal);
+route.put('/:id', validation.saveJournal, controller.updateJournal);
 
 // Handles any http DELETE requests
 route.delete('/:id', controller.deleteJournal);
