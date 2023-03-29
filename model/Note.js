@@ -24,13 +24,13 @@ const noteSchema = new Schema({
     },
     chapter: {
         type: Number,
-        min: 0,
+        min: 1,
         max: 150,
         required: true
     },
     verse: {
         type: Number,
-        min: 0,
+        min: 1,
         max: 176,
         required: true
     },
