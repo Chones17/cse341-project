@@ -37,42 +37,48 @@ This project is aimed at helping aid scripture study by giving the end user a pl
     ```
 
 ## Checklist
-- Deployed to the Web
-    - [x] Node.js app deployed to Render
-    - [x] Connected to MongoDB
-    - [x] Render CONFIG VARS
-    - [x] Mongoose models created
-- OAuth
-    - [x] Login, logout, and GitHub authentication routes
-    - [x] Passport, Passport-GitHub2, Express-cookies,
-            Connect-mongodb-session dependencies
-    - [x] Install mongoose-findorcreate
-    - [x] Authentication configuration
-    - [x] Authentication middleware
-- HTTP Request
-    - [x] GET, POST, PUT, and DELETE routes
-    - [x] Controllers setup
-- Testing
-    - [ ] One test file for each controller file
-    - [ ] One test file for app.js
-    - [ ] One test file for each route file
-- Database
-    - [x] Database has 4 collections
-    - [x] One collection has 7 fields
-- API Documentation
-    - [x] Swagger.json file
-    - [x] Organized by collection
-    - [x] API route setup
-    - [x] Documentation can test each endpoint
-- Data Validation
-    - [ ] Install dependency Express-validator
-    - [ ] Data validation for each GET, POST, PUT, and DELETE route
-    - [ ] Each route returns 400 or 500 error based on validation
-- Error Handling
-    - [x] Error handling for each GET, POST, PUT, and DELETE route
-    - [x] Each route returns 400 or 500 error based on handling
-- REST
-    - [ ] Rest file updated to test each endpoint
+- Deployed to the Web (15%)
+    - [ ] Node.js app deployed to Render (65%)
+    - [ ] Render URL can be opened without any errors (78%)
+    - [x] App connects to MongoDB (90%)
+    - [x] Use of Render CONFIG VARS to connect to MongoDB (100%)
+- OAuth (15%)
+    - [x] Evidence of OAuth is in the Node.js project (65%)
+    - [x] User can log in using OAuth (78%)
+    - [x] User can log out using OAuth (90%)
+    - [x] Each protected route requires authentication before access (100%)
+- HTTP Requests (15%)
+    - [x] Several HTTP Requests are in theh project and work (65%)
+    - [x] At least one HTTP Request is present for each collection in the database (78%)
+    - [x] At least 4 collections have a POST request (90%)
+    - [x] At least 4 collections have a PUT or DELETE request (100%)
+- Testing (15%)
+    - [ ] At least one unit test file exists (65%)
+    - [ ] At least one unit test file for each .js file in the controllers folder (78%)
+    - [ ] All tests running and passing (90%)
+    - [ ] Unit tests exist and pass for main server.js file and .js files in routes folder (100%)
+- Database (10%)
+    - [x] Database exists (65%)
+    - [x] Database has a single collection (78%)
+    - [x] Database has at least 4 collections (90%)
+    - [x] At least one collection features documents with at least 7 fields (100%)
+- API Documentation (10%)
+    - [x] The swagger.json file is present (65%)
+    - [x] Documentation is organized by collection (78%)
+    - [x] The documentation is published to Render at "/api-docs" route (90%)
+    - [x] The documentation can test each endpoint (100%)
+- Data Validation (10%)
+    - [x] Node project has evidence of data validation (65%)
+    - [ ] Data validation is being used for each GET and POST route (78%)
+    - [ ] Data validation is being used for each PUT and DELETE route (90%)
+    - [ ] Each route has data validation, and returns some type of 400 or 500 error if
+          data requirements aren't met (100%)
+- Error Handling (10%)
+    - [x] Node project has evidence of error handling (65%)
+    - [ ] Error handling is being used for each GET and POST route (78%)
+    - [ ] Error handling is being used for each PUT and DELETE route (90%)
+    - [ ] Each route has error handling, and returns some type of 400 or 500 errors 
+          get thrown (100%)
 
 ## Development
 Checklist for development team to ensure compatability in local and production environment.
@@ -86,13 +92,19 @@ Checklist for development team to ensure compatability in local and production e
 Note: When ready to Push to GitHub respository follow the last four steps of the process.
 
 ## Dependencies
-- Cors
-- Dotenv
-- Express
-- Mongoose
-- Nodemon
+- connect-mongodb-session
+- cors
+- dotenv
+- express
+- express-session
+- mongoose
+- mongoose-findorcreate
+- nodemon
+- passport
+- passport-github2
 - swagger-ui-express
 - swagger-autogen
+- validatorjs
 
 ## Authors
 - Travis Stirling
