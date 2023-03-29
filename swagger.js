@@ -7,11 +7,14 @@ const doc = {
         title: 'My Scripture Journal API',
         description: 'API for keeping a Scripture Journal'
     },
-    host: 'https://cse341-project-production.onrender.com/',
+    // host: 'localhost:3000',
+    host: 'cse341-project-production.onrender.com',
+    // schemes: ['http'],
     schemes: ['https'],
     securityDefinitions: {
         github_oauth: {
         type: 'oauth2',
+        // authorizationUrl: 'http://localhost:3000/auth/github',
         authorizationUrl: 'https://cse341-project-production.onrender.com/auth/github',
         flow: 'accessCode',
         scopes: {
