@@ -48,7 +48,30 @@ const doc = {
         name: 'User',
         description: 'Keeps Track of the user and their credentials'
         }
-    ]
+    ],
+    definitions: {
+        Journal: {
+            $title: 'My Book of Mormon Journal',
+            $description: 'This is my journal dedicated to the Book of Mormon.',
+            $createDate: '01/01/2023'
+        },
+        Note: {
+            $entryDate: '01/01/2023',
+            $canon: 'Old Testament',
+            $book: 'Genesis',
+            $chapter: 1,
+            $verse: 5,
+            $note: 'And God called the light Day, and the darkness he called Night.'
+        },
+        Topic: {
+            $topic: 'Revelation'
+        },
+        User: {
+            $githubId: '1234567',
+            userName: 'Test1717',
+            email: 'test@test.com'
+        }
+    }
 };
 
 // Create output file and set endpoint file

@@ -77,20 +77,6 @@
         }
       }
     },
-    "/auth/github": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
-    "/auth/github/callback": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
     "/journal/": {
       "get": {
         "tags": [
@@ -691,6 +677,99 @@
           }
         }
       }
+    }
+  },
+  "definitions": {
+    "Journal": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "example": "My Book of Mormon Journal"
+        },
+        "description": {
+          "type": "string",
+          "example": "This is my journal dedicated to the Book of Mormon."
+        },
+        "createDate": {
+          "type": "string",
+          "example": "01/01/2023"
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "createDate"
+      ]
+    },
+    "Note": {
+      "type": "object",
+      "properties": {
+        "entryDate": {
+          "type": "string",
+          "example": "01/01/2023"
+        },
+        "canon": {
+          "type": "string",
+          "example": "Old Testament"
+        },
+        "book": {
+          "type": "string",
+          "example": "Genesis"
+        },
+        "chapter": {
+          "type": "number",
+          "example": 1
+        },
+        "verse": {
+          "type": "number",
+          "example": 5
+        },
+        "note": {
+          "type": "string",
+          "example": "And God called the light Day, and the darkness he called Night."
+        }
+      },
+      "required": [
+        "entryDate",
+        "canon",
+        "book",
+        "chapter",
+        "verse",
+        "note"
+      ]
+    },
+    "Topic": {
+      "type": "object",
+      "properties": {
+        "topic": {
+          "type": "string",
+          "example": "Revelation"
+        }
+      },
+      "required": [
+        "topic"
+      ]
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "githubId": {
+          "type": "string",
+          "example": "1234567"
+        },
+        "userName": {
+          "type": "string",
+          "example": "Test1717"
+        },
+        "email": {
+          "type": "string",
+          "example": "test@test.com"
+        }
+      },
+      "required": [
+        "githubId"
+      ]
     }
   },
   "security": {
