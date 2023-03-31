@@ -89,8 +89,7 @@ POST http://localhost:3000/topic HTTP/1.1
 Content-Type: application/json
 
 {
-    "title": "Faith",
-    "description": "Faith is like a seed."
+    "topic": "Faith"
 }
 
 ### HTTP PUT Request - Topic
@@ -98,8 +97,7 @@ PUT http://localhost:3000/topic/640a1afb387774afa60eafaa HTTP/1.1
 Content-Type: application/json
 
 {
-    "title": "Tithing",
-    "description": "Tithing is giving 10% of our earnings to the Lord."
+    "topic": "Tithing"
 }
 
 ### HTTP DELETE Request - Topic
@@ -235,8 +233,7 @@ POST http://cse341-project.onrender.com/topic HTTP/1.1
 Content-Type: application/json
 
 {
-    "title": "Faith",
-    "description": "Faith is like a seed"
+    "topic": "Faith"
 }
 
 ### HTTP PUT Request - Topic
@@ -244,8 +241,7 @@ PUT http://cse341-project.onrender.com/topic/640a1afb387774afa60eafaa HTTP/1.1
 Content-Type: application/json
 
 {
-    "title": "Tithing",
-    "description": "Tithing is giving 10% of our earnings to the Lord."
+    "topic": "Tithing"
 }
 
 ### HTTP DELETE Request - Topic
