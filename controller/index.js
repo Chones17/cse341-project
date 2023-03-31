@@ -8,8 +8,13 @@ const path = require('path');
 const index = async (req, res) => {
 
     // #swagger.ignore = true
-
-    await res.status(200).send('This is the home page.');
+    
+    try {
+        await res.status(200).send('This is the home page.');
+    } catch(error) {
+        res.status(500);
+        res.json(error || 'An error occurred while sending the request.');
+    }
 }
 
 /**
@@ -20,6 +25,7 @@ const index = async (req, res) => {
 const login = async (req, res) => {
 
     // #swagger.tags = ['Authentication']
+
     try {
         await res.sendFile(path.join(__dirname, '../static/index.html'));
     } catch(error) {
