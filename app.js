@@ -7,9 +7,7 @@ const session = require('express-session');
 const auth = require('./config/auth');
 const app = express();
 const passport = require('passport');
-const mongoose = require('mongoose');
 const MongoStore = require('connect-mongodb-session')(session);
-const port = process.env.PORT || 3000;
 
 // Connect to database
 connect();
@@ -33,7 +31,4 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use('/', require('./route'));
 
-// Listens to port and logs event to the console
-mongoose.connection.once('open', () => {
-    app.listen(port, () => console.log(`App listening on port ${port}`));
-});
+module.exports = app;
