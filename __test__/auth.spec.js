@@ -18,10 +18,3 @@ describe ('GET /auth/github', () => {
         expect(response.statusCode).toBe(302);
     });
 });
-
-describe('Auth function', () => {
-
-    test('should return nothing', () => {
-        expect()
-    });
-});
