@@ -14,7 +14,7 @@ route.post('/', auth, validate.topic, validate.results, controller.postTopic);
 route.put('/:id', auth, validate.id, validate.topic, validate.results, controller.putTopic);
 
 // Handles any http DELETE requests
-route.delete('/:id', auth, validate.topic, validate.results, controller.deleteTopic);
+route.delete('/:id', auth, validate.id, validate.results, controller.deleteTopic);
 
 // Export route object
 module.exports = route;
