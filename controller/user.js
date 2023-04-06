@@ -49,13 +49,13 @@ const postUser = async (req, res) => {
     // #swagger.tags = ['User']
 
     // Set the request body
-    const User = {
+    const user = {
         githubId: req.body.githubId,
         userName: req.body.userName,
         email: req.body.email
     };
     
-    await User.create(User).then(() => {
+    await User.create(user).then(() => {
         res.status(201);
         res.send();
     }).catch(error => {
@@ -74,13 +74,13 @@ const putUser = async (req, res) => {
     // #swagger.tags = ['User']
 
     // Set the request body
-    const User = {
+    const user = {
         githubId: req.body.githubId,
         userName: req.body.userName,
         email: req.body.email
     };
 
-    await User.updateOne({ _id: req.params.id }, User).then(() => {
+    await User.updateOne({ _id: req.params.id }, user).then(() => {
         res.status(204);
         res.send();
     }).catch(error => {
